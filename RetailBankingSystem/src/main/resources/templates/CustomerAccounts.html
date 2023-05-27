@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/CustomerAccounts.css}">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<title>Account</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="navigation">
+<!-- 			<img th:src="@{/images/cognizant logo.jpg}" height="50px"> -->
+			<span>Cognizant</span>
+			<div class="options">
+
+				<a th:href="@{customers}">View Customers</a> <a
+					th:href="@{showCreateCustomerPage}">Create Customer Profile</a> <a
+					th:href="@{showCustomerDetailsPage}"> View Customer Profile</a> <a
+					th:href="@{createAccount}">Create Account</a> <a
+					th:href="@{getCustomerAccountsInput}"
+					style="text-decoration: underline;">View Accounts</a> <a
+					th:href="@{e}">Log Out</a>
+
+			</div>
+		</div>
+
+		<div class="main-container">
+			<div class="customerIdInput">
+				<form th:action="@{getCustomerAccounts}" method="get">
+					Customer ID: <input type="number" name="customerId"
+						th:value="${customerId}" required="required"> <input
+						type="submit">
+				</form>
+			</div>
+
+			<h1>Accounts</h1>
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>Account ID</th>
+							<th>Account Type</th>
+							<th>Customer ID</th>
+							<th>Balance</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody>
+						<tr th:each="account:${accounts}">
+							<td th:text="${account.accountId}"></td>
+							<td th:text="${account.accountType}"></td>
+							<td th:text="${account.customerId}"></td>
+							<td th:text="${account.initialBalance}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

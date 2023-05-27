@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" th:href="@{/css/employeeHome.css}" />
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<title>Employee Home</title>
+</head>
+<body>
+
+<div class="container">
+		<div class="navigation">
+<!-- 			<img th:src="@{/images/cognizant logo.jpg}" height="50px"> -->
+<span>Cognizant</span>
+			<div class="options">
+
+				<a th:href="@{customers}" style="text-decoration: underline;">View Customers</a>
+				<a th:href="@{showCreateCustomerPage}">Create Customer
+					Profile</a>
+				<a th:href="@{showCustomerDetailsPage}">View Customer
+					Profile</a>
+				<a th:href="@{createAccount}">Create Account</a>
+				<a th:href="@{getCustomerAccountsInput}">View Accounts</a>
+				<a th:href="@{e}">Log Out</a>
+				
+			</div>
+		</div>
+
+		<h1 style="text-align: center;">Customers</h1>
+		<div class="tbl-header">
+		  <table cellpadding="0" cellspacing="0" border="0">
+			<thead>
+			  <tr>
+				<th>Customer ID</th>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Date of Birth</th>
+			  </tr>
+			</thead>
+		  </table>
+		</div>
+		<div class="tbl-content">
+		  <table cellpadding="0" cellspacing="0" border="0">
+			<tbody>
+				<tr th:each="customer:${customers}">
+					<td th:text="${customer.customerId}"></td>
+					<td th:text="${customer.title}+' '+${customer.firstName} +' '+ ${customer.middleName}+' '+${customer.lastName}"></td>
+					<td th:text="${customer.gender}"></td>
+					<td th:text="${customer.dateOfBirth}"></td>
+				</tr>
+			</tbody>
+		  </table>
+		</div>
+	</div>
+
+
+
+
+	<script>
+	
+	console.log('hello external js file');
+
+    let auth_token;
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: 'get',
+            url: 'https://www.universal-tutorial.com/api/getaccesstoken',
+            success: function (data) {
+                auth_token = data.auth_token;
+                getCountry(auth_token);
+                console.log('getcountry called');
+            },
+            error: function (error) {
+                console.log(error);
+            },
+            headers: {
+                "Accept": "application/json",
+                "api-token": "EAkirm5dVu7rcA-5KxSpyiJo2i05Ovw-F3mlyHpQaKGo7_OTNmS3S7-P3ZDzd2i71X4",
+                "user-email": "gauravwadibhasme0850@gmail.com"
+            }
+
+        })
+
+        $('#country').change(function () {
+            console.log('countrychange');
+            // document.getElementById("state").disabled=false;
+            $('#state').attr('disabled', false);
+            $('#city').attr('disabled', true);
+            $('#city').empty();
+            $('#city').append('<option>City</option>');
+            $('#pincode').attr('disabled', true);
+            getState(auth_token);
+
+        });
+
+        $('#state').change(function () {
+            console.log('state change');
+            $('#city').attr('disabled', false);
+            $('#pincode').attr('disabled', true);
+            getCity(auth_token);
+        });
+
+        $('#city').change(function () {
+            console.log('city change');
+            $('#pincode').attr('disabled', false);
+
+        });
+    })
+
+
+    function getCountry(auth_token) {
+        $.ajax({
+            type: 'get',
+            url: 'https://www.universal-tutorial.com/api/countries',
+            success: function (data) {
+
+                data.forEach(element => {
+                    $('#country').append('<option value="' + element.country_name + '">' + element.country_name + '</option>');
+                });
+                //getState(auth_token);
+                console.log(data);
+            },
+            error: function (error) {
+                console.log(error);
+            },
+            headers: {
+                "Authorization": "Bearer " + auth_token,
+                "Accept": "application/json"
+            }
+
+        })
+    }
+
+
+    function getState(auth_token) {
+        console.log('get state called');
+        let country_name = $('#country').val();
+        console.log(country_name);
+        $.ajax({
+            type: 'get',
+            url: 'https://www.universal-tutorial.com/api/states/' + country_name,
+            success: function (data) {
+
+                $('#state').empty();
+                $('#state').append('<option value="" disabled selected>State</option>');
+                data.forEach(element => {
+
+                    $('#state').append('<option value="' + element.state_name + '">' + element.state_name + '</option>');
+                });
+
+                //getCity(auth_token);
+                //console.log('get city called');
+            },
+            error: function (error) {
+                console.log(error);
+            },
+            headers: {
+                "Authorization": "Bearer " + auth_token,
+                "Accept": "application/json"
+            }
+
+        })
+    }
+
+
+
+    function getCity(auth_token) {
+        let state_name = $('#state').val();
+        $.ajax({
+            type: 'get',
+            url: 'https://www.universal-tutorial.com/api/cities/' + state_name,
+            success: function (data) {
+
+                $('#city').empty();
+                $('#city').append('<option>City</option>');
+                data.forEach(element => {
+                    $('#city').append('<option value="' + element.city_name + '">' + element.city_name + '</option>');
+                });
+
+                console.log('ajax');
+            },
+            error: function (error) {
+                console.log(error);
+            },
+            headers: {
+                "Authorization": "Bearer " + auth_token,
+                "Accept": "application/json"
+            }
+
+        })
+    }
+
+
+
+    var displayImage = function (event) {
+        var img = document.getElementById("output");
+        img.src = URL.createObjectURL(event.target.files[0]);
+    };
+	
+	
+		
+	</script>
+
+
+
+
+</body>
+</html>

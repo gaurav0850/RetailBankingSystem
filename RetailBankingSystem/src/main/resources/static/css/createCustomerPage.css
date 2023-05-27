@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	/* height: 100vh; */
+	/* margin: -20px 0 50px; */
+}
+
+
+.container {
+	width: 100%;
+    min-width: 750px;
+}
+
+.navigation{
+	width: 100%;
+    display: flex;
+   box-shadow: 0 5px 4px  #00000026;
+   background: #000048;
+   justify-content: center;
+   align-items: center;
+}
+
+
+
+.options{
+    margin: 15px 0px 15px 50px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    /* left:25%; */
+    justify-content: space-between;
+    
+}
+
+.navigation span, .options a{
+	color: #fff;
+	cursor: pointer;
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+}
+.navigation span{
+	font-weight: bold;
+}
+
+.title {
+	margin-top: 25px;
+	font-size: 50px;
+	font-weight: 500;
+
+	text-align: center;
+	padding: 0 0 25px 0;
+}
+
+form{
+	display:flex;
+	
+	justify-content: center;
+}
+
+.content form .user-details {
+	display: flex;
+	flex-wrap: wrap;
+	
+	margin: 20px 0 12px 0;
+}
+
+.horizontal {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 10px;
+}
+
+form .user-details .component {
+	margin-bottom: 15px;
+	width: calc(100% / 2 - 20px);
+}
+
+form .component label {
+	display: block;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+
+.component .icon-input{
+	background: #eee;
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #ccc;
+	border-bottom-width: 2px;
+	transition: all 0.3s ease;
+	border-radius: 5px;
+	justify-content: center;
+	height: 40px;
+
+}
+
+.icon-input i{
+	height: 20px;
+	width: 20px;
+	/* border: 2px solid red; */
+	position:relative;
+	margin:10px;
+}
+
+.user-details .component input {
+	background: #eee;
+	height: 35px;
+	width: 100%;
+	outline: none;
+	font-size: 16px;
+	
+	padding-left: 15px;
+	/* border:2px solid red; */
+	border: none;
+
+	padding-right: 15px;
+	caret-color: red;
+	
+}
+
+
+
+select{
+	width:100%;
+	border:none;
+	background: #eee;
+	font-size: 16px;
+}
+
+
+option{
+	background: #fff;
+	font-size: 16px;
+}
+
+
+
+#imageUpload input{
+	/* display: none; */
+	padding-top: 5px;
+}
+
+
+#imageUpload input::file-selector-button {
+    font-weight: bold;
+    /* color: dodgerblue; */
+    border: none;
+
+}
+
+#imageUpload input::file-selector-button:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#imageUpload input::file-selector-button:active{
+	transform: scale(0.9);
+	
+}
+
+
+
+#imageUpload label{
+	width: 100%;
+	margin: auto;
+	/* font-size: 13px; */
+
+	overflow-y: hidden;
+	font-weight: 400;
+	margin-left:15px;
+	cursor: pointer;
+}
+
+#imageUpload label:hover{
+	font-weight: 500; 
+	text-decoration: underline;
+}
+
+#usernameHorizontal .component, #imageHorizontal .component{
+	width:100%;
+}
+
+.btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 15px 0;
+	
+}
+
+
+button {
+	border-radius: 10px;
+	border: 1px solid #FF4B2B;
+	background-color: #389cce;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	width: 95%;
+}
+
+button:active, a:active {
+	transform: scale(0.95);
+}
+
+button:focus, a:focus {
+	outline: none;
+}
+
+button:hover, a:hover {
+	cursor: pointer;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+a{
+    cursor: pointer;
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#errMsg{
+	display: block;
+	position: relative;
+	text-align: center;
+	/* border:2px solid red; */
+	width:100%;
+	left: -35%;
+	border-radius: 10px;
+	color:red;
+	margin:0;
+}
+
+.navigation{
+    display: flex;
+}
+
+
+.options{
+    margin: 15px 0px 15px 50px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    /* left:25%; */
+    justify-content: space-between;
+}
+  
+b{
+	    /* text-align: center; */
+    display: flex;
+    /* width: 100%; */
+/*     border: 1px solid black; */
+    justify-content: center;
+}
+

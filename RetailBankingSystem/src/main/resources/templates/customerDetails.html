@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/customerDetails.css}">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<title>Customer</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="navigation">
+<!-- 			<img th:src="@{/images/cognizant logo.jpg}" height="50px"> -->
+			<span>Cognizant</span>
+			<div class="options">
+
+				<a th:href="@{customers}">View Customers</a> <a
+					th:href="@{showCreateCustomerPage}">Create Customer Profile</a> <a
+					th:href="@{showCustomerDetailsPage}"
+					style="text-decoration: underline;"> View Customer Profile</a> <a
+					th:href="@{createAccount}">Create Account</a> <a
+					th:href="@{getCustomerAccountsInput}">View Accounts</a> <a
+					th:href="@{e}">Log Out</a>
+
+			</div>
+		</div>
+		<div class="main-container">
+			<div class="customerIdInput">
+				<form th:action="@{getCustomerDetails}" method="get">
+					<div class="horizontal">
+						Customer ID: <input type="number" name="customerId"
+							required="required">
+					</div>
+					<input type="submit" id="submit">
+				</form>
+
+			</div>
+			<div class="customerDetails">
+				<div class="horizontal">
+			<label>Customer ID:</label>
+				<span th:text="${customer.customerId}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Title:</label>
+				<span name="title" th:text="${customer.title}"></span>
+			</div>
+			<div class="horizontal">
+			<label>First Name:</label>
+				<span name="firstName" th:text="${customer.firstName}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Middle Name:</label>
+				<span name="middleName"
+					th:text="${customer.middleName}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Last Name:</label>
+				<span name="lastName" th:text="${customer.lastName}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Gender:</label>
+				 <span name="gender" id="gender"
+					th:text="${customer.gender}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Date of Birth:</label>
+				<span name="dateOfBirth"
+					th:text="${customer.dateOfBirth}"></span>
+			</div>
+
+			<div class="horizontal">
+			<label>Address:</label>
+				<span name="addressLine" th:text="${customer.addressLine}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Country:</label>
+				<span id="country" name="country"
+					th:text="${customer.country}"></span>
+			</div>
+			<div class="horizontal">
+			<label>State:</label>
+				<span id="state" name="state" th:text="${customer.state}"></span>
+			</div>
+			<div class="horizontal">
+			<label>City:</label>
+				<span id="city" name="city" th:text="${customer.city}"></span>
+			</div>
+			<div class="horizontal">
+			<label>Pin code:</label>
+				<span name="pincode" th:text="${customer.pincode}"></span>
+			</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

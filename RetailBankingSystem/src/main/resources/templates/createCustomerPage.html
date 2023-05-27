@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/createCustomerPage.css}">
+<script src="https://kit.fontawesome.com/eed69c8878.js" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<title>Customer</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="navigation">
+<!-- 			<img th:src="@{/images/cognizant logo.jpg}" height="50px"> -->
+			<span>Cognizant</span>
+			<div class="options">
+
+				<a th:href="@{customers}" >View
+					Customers</a> <a th:href="@{showCreateCustomerPage}" style="text-decoration: underline;">Create
+					Customer Profile</a> <a th:href="@{showCustomerDetailsPage}">View
+					Customer Profile</a> <a th:href="@{createAccount}">Create Account</a> <a
+					th:href="@{getCustomerAccountsInput}">View Accounts</a> <a
+					th:href="@{e}">Log Out</a>
+
+			</div>
+		</div>
+
+		<div class="title">Registration</div>
+		<form class="signup-form" th:action="@{createCustomer}" method="post"
+			enctype="multipart/form-data">
+			<div class="user-details">
+				<div class="horizontal">
+					<div class="component">
+						<label for="title">Title</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-id-card"></i> <input type="text"
+								class="1title" name="title" id="title"
+								 placeholder="Title" required>
+						</div>
+					</div>
+					<div class="component">
+						<label for="firstName" class="firstName">First Name</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-id-card"></i> <input type="text"
+								class="firstName" name="firstName" id="firstName"
+								 placeholder="Enter first Name" required>
+						</div>
+					</div>
+				</div>
+                <div class="horizontal">
+					<div class="component">
+						<label for="middleName" class="middleName">Middle Name</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-id-card"></i> <input type="text"
+								class="middleName" name="middleName" id="middleName"
+								placeholder="Enter middle Name" required>
+						</div>
+					</div>
+					<div class="component">
+						<label for="lastName" class="lastName">Enter Last Name</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-id-card"></i> <input type="text"
+								class="lastName" name="lastName" id="lastName"
+								placeholder="Enter Last Name" required>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="horizontal">
+					<div class="component">
+						<label for="password">Password:</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-lock"></i> <input type="password"
+								class="password" name="password" id="password"
+								placeholder="Enter Password" required> <i
+								class="fa-solid fa-eye-slash" id="togglePassword"></i>
+						</div>
+					</div>
+					<div class="component">
+						<label for="cPassword">Confirm Password:</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-lock"></i> <input type="Password"
+								class="cPassword" name="cPassword" id="cPassword"
+								placeholder="Confirm Password" required>
+						</div>
+					</div>
+				</div>
+
+                <div class="horizontal">
+					<div class="component">
+						<label for="password">Gender:</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-user"></i> <select  name="gender" id="gender" required>
+                                <option selected disabled>Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select> 
+						</div>
+					</div>
+					<div class="component">
+						<label for="cPassword">Date of birth:</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-calendar"></i> <input type="date"
+								class="date" name="dateOfBirth" id="dateOfBirth"
+								required>
+						</div>
+					</div>
+				</div>
+
+				
+
+                <div class="horizontal" id="imageHorizontal">
+					<div class="component">
+						<label for="image">Image:</label>
+						<div class="icon-input" id="imageUpload">
+							<i class="fa-solid fa-camera"></i>
+							<!-- <label for="image">Click here to Upload Image</label> -->
+							<input type="file" accept="image/*" name="document" id="document"
+								onchange="displayImage(event)">
+						</div>
+					</div>
+
+				</div>
+
+                <div class="horizontal" id="usernameHorizontal">
+					<div class="component">
+						<label for="username">Address Line 1:</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-location-pin"></i> <input type="text"
+								class="addressLine" name="addressLine" id="addressLine"
+								placeholder="Enter address" required>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="horizontal">
+					<div class="component">
+						<label for="country">Country</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-globe"></i> <select id="country"
+								name="country">
+								<option value="" selected>Country</option>
+							</select>
+						</div>
+					</div>
+					<div class="component">
+						<label for="state">State</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-map-location"></i> <select id="state"
+								name="state" disabled>
+								<option value="" selected>State</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="horizontal">
+					<div class="component">
+						<label for="city">City</label>
+						<div class="icon-input">
+							<i class="fa-solid fa-building-flag"></i> <select id="city"
+								name="city" disabled>
+								<option value="" selected>City</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="component">
+						<label for="pinCode">Enter PinCode </label>
+						<div class="icon-input">
+							<i class="fa-solid fa-map-location"></i> <input type="text"
+								id="pincode" name="pincode" placeholder="Enter Pincode" disabled></input>
+						</div>
+					</div>
+				</div>
+				<div class="btn-container">
+					<button type="submit" class="button" name="submit" id="submit">Create
+						Account</button>
+					<!-- <button type="reset" class="button" name="reset" id="reset">Reset</button> -->
+				</div>
+			</div>
+		</form>
+		
+		<b th:text="${result}"></b>	</div>
+	<script>
+		
+	
+	
+        console.log('hello external js file');
+
+        let auth_token;
+
+        $(document).ready(function () {
+
+            $.ajax({
+                type: 'get',
+                url: 'https://www.universal-tutorial.com/api/getaccesstoken',
+                success: function (data) {
+                    auth_token = data.auth_token;
+                    getCountry(auth_token);
+                    console.log('getcountry called');
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                headers: {
+                    "Accept": "application/json",
+                    "api-token": "EAkirm5dVu7rcA-5KxSpyiJo2i05Ovw-F3mlyHpQaKGo7_OTNmS3S7-P3ZDzd2i71X4",
+                    "user-email": "gauravwadibhasme0850@gmail.com"
+                }
+
+            })
+
+            $('#country').change(function () {
+                console.log('countrychange');
+                // document.getElementById("state").disabled=false;
+                $('#state').attr('disabled', false);
+                $('#city').attr('disabled', true);
+                $('#city').empty();
+                $('#city').append('<option>City</option>');
+                $('#pincode').attr('disabled', true);
+                getState(auth_token);
+
+            });
+
+            $('#state').change(function () {
+                console.log('state change');
+                $('#city').attr('disabled', false);
+                $('#pincode').attr('disabled', true);
+                getCity(auth_token);
+            });
+
+            $('#city').change(function () {
+                console.log('city change');
+                $('#pincode').attr('disabled', false);
+
+            });
+        })
+
+
+        function getCountry(auth_token) {
+            $.ajax({
+                type: 'get',
+                url: 'https://www.universal-tutorial.com/api/countries',
+                success: function (data) {
+
+                    data.forEach(element => {
+                        $('#country').append('<option value="' + element.country_name + '">' + element.country_name + '</option>');
+                    });
+                    //getState(auth_token);
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                headers: {
+                    "Authorization": "Bearer " + auth_token,
+                    "Accept": "application/json"
+                }
+
+            })
+        }
+
+
+        function getState(auth_token) {
+            console.log('get state called');
+            let country_name = $('#country').val();
+            console.log(country_name);
+            $.ajax({
+                type: 'get',
+                url: 'https://www.universal-tutorial.com/api/states/' + country_name,
+                success: function (data) {
+
+                    $('#state').empty();
+                    $('#state').append('<option value="" disabled selected>State</option>');
+                    data.forEach(element => {
+
+                        $('#state').append('<option value="' + element.state_name + '">' + element.state_name + '</option>');
+                    });
+
+                    //getCity(auth_token);
+                    //console.log('get city called');
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                headers: {
+                    "Authorization": "Bearer " + auth_token,
+                    "Accept": "application/json"
+                }
+
+            })
+        }
+
+
+
+        function getCity(auth_token) {
+            let state_name = $('#state').val();
+            $.ajax({
+                type: 'get',
+                url: 'https://www.universal-tutorial.com/api/cities/' + state_name,
+                success: function (data) {
+
+                    $('#city').empty();
+                    $('#city').append('<option>City</option>');
+                    data.forEach(element => {
+                        $('#city').append('<option value="' + element.city_name + '">' + element.city_name + '</option>');
+                    });
+
+                    console.log('ajax');
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                headers: {
+                    "Authorization": "Bearer " + auth_token,
+                    "Accept": "application/json"
+                }
+
+            })
+        }
+
+
+
+        $(document).ready(function () {
+            $("#username").change(function () {
+                console.log('username function called');
+                $.ajax({
+                    url: 'validateUsername',
+                    data: {
+                        username: $("#username").val(),
+                    },
+                    success: function (responseText) {
+                        $("#errMsg").text(responseText);
+
+                        if (responseText != "") {
+                            $("#username").focus();
+                            $("#submit").attr('disabled', true);
+                        } else {
+                            $("#submit").attr('disabled', false);
+                        }
+                    }
+                });
+            });
+        });
+
+        document.getElementById("togglePassword").addEventListener('click',
+        		function() {
+        			var x = document.getElementById("password");
+        			var y = document.getElementById("cPassword");
+        			if (x.type === "password") {
+        				x.type = "text";
+        				y.type = "text";
+        				this.className = 'fa-solid fa-eye';
+        			} else {
+        				x.type = "password";
+        				y.type = "password";
+        				this.className = 'fa-solid fa-eye-slash';
+        			}
+        		});
+
+
+
+        var displayImage = function (event) {
+            var img = document.getElementById("output");
+            img.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+</body>
+
+</html>

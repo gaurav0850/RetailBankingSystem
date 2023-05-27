@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" th:href="@{/css/login.css}" />
+<script src="https://kit.fontawesome.com/eed69c8878.js" crossorigin="anonymous"></script>
+<title>Login</title>
+</head>
+<body>
+	<div class="container">
+		<div class="customerContainer" id="customerContainer">
+			<div class="title">Customer</div>
+			<form class="sign-in-container" th:action="@{customerHome}" method="post">
+				<label for="username">Customer ID:</label>
+				<div class="icon-input" id="usernameIconInput">
+					<i class="fa-solid fa-user"></i> <input type="number"
+						class="customerId" name="customerId" id="customerId"
+						placeholder="Customer ID" th:value="${username}"  required />
+				</div>
+				<label for="password">Password:</label>
+				<div class="icon-input" id="passwordIconInput">
+					<i class="fa-solid fa-lock"></i> <input type="password"
+						class="password" name="password" id="password"
+						placeholder="Password" required> <i
+						class="fa-solid fa-eye-slash" id="togglePassword"></i>
+				</div>
+				<div class="btn-container">
+					<i class="zmdi zmdi-eye"></i>
+					<button type="submit" class="submit" name="submit" id="submit">Login</button>
+				</div>
+<a th:href="@{/e}">Employee Login</a>
+			</form>
+			<div class="result" id="result" th:text="${res}"></div>
+		</div>
+	</div>
+	
+	
+<script type="text/javascript">
+var result = document.getElementById("result");
+var username = document.getElementById("usernameIconInput");
+var password = document.getElementById("passwordIconInput");
+console.log(result);
+console.log(result.innerHTML);
+console.log(username);
+console.log(password);
+
+if (result.innerHTML === 'Password wrong') {
+	password.style.border = '2px solid red';
+	username.style.border = 'none';
+} else if (result.innerHTML === 'Username doesnt exist') {
+	username.style.border = '2px solid red'
+	password.style.border = 'none';
+}
+
+function myFunction() {
+	var x = document.getElementById("password");
+	if (x.type === "password") {
+		x.type = "text";
+	} else {
+		x.type = "password";
+	}
+}
+
+document.getElementById("togglePassword").addEventListener('click',
+		function() {
+			var x = document.getElementById("password");
+			if (x.type === "password") {
+				x.type = "text";
+				this.className = 'fa-solid fa-eye';
+			} else {
+				x.type = "password";
+				this.className = 'fa-solid fa-eye-slash';
+			}
+		});
+		</script>
+</body>
+</html>

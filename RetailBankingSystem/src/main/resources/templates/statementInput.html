@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/statementInput.css}">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<title>Account</title>
+</head>
+
+<body>
+	<div class="container">
+				<div class="navigation">
+<!-- 			<img th:src="@{/images/cognizant logo.jpg}" height="50px"> -->
+			<span>Cognizant</span>
+			<div class="options">
+			<form th:action="@{customerHome}" method="post">
+			<input type="number" name="customerId" th:value="${customer.customerId}" hidden>
+			<input type="number" name="password" th:value="${customer.password}" hidden>
+			<input type="submit" name="customerDetails" value="Customer Details">
+			</form>
+			
+			<form th:action="@{statementsPage}" method="post">
+			<input type="number" name="customerId" th:value="${customer.customerId}" hidden>
+			
+			<input type="submit" value="Account Statements">
+			</form>
+			
+			<form th:action="@{transaction}" method="post">
+			<input type="number" name="customerId" th:value="${customer.customerId}" hidden>
+			
+			<input type="submit" value="Deposit or withdraw">
+			</form>
+			<a th:href="@{e}">Log Out</a>
+</div>
+			</div>
+
+		<div class="main-container">
+			<div class="title">Statements</div>
+			<form th:action="@{statements}" method="post">
+			<div class="horizontal">CustomerID: <input type="number" name="customerId"
+					th:value="${customer.customerId}"></div>
+			<div class="horizontal">Select Account ID:<select
+					name="accountId">
+					<option selected disabled>Select</option>
+					<option th:each="account:${accounts}"
+						th:text="${account.accountId}" th:value="${account.accountId}">
+				</select></div>
+				Select Date Range: from
+				<input type="date" name="fromDate" id="fromDate">
+				to <input type="date" name="toDate" id="toDate">
+			<div class="horizontal"> <input type="submit" value="View Transactions"></div>
+				 
+			</form>
+		</div>
+	</div>
+
+	<p th:text="${result}" id="result"></p>
+</body>
+
+
+</html>

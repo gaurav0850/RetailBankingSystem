@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/transaction.css}">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<title>Transaction Page</title>
+</head>
+
+<body>
+<div class="container">
+		<div class="navigation">
+<!-- 			<img th:src="@{/images/cognizant logo.jpg}" height="50px"> -->
+			<span>Cognizant</span>
+			<div class="options">
+				<form th:action="@{customerHome}" method="post">
+					<input type="number" name="customerId" th:value="${customer.customerId}" hidden>
+					<input type="number" name="password" th:value="${customer.password}" hidden>
+					<input type="submit" name="customerDetails" value="Customer Details">
+				</form>
+
+				<form th:action="@{statementsPage}" method="post">
+					<input type="number" name="customerId" th:value="${customer.customerId}" hidden>
+
+					<input type="submit" value="Account Statements">
+				</form>
+
+				<form th:action="@{transaction}" method="post">
+					<input type="number" name="customerId" th:value="${customer.customerId}" hidden>
+
+					<input type="submit" value="Deposit or withdraw">
+				</form>
+				<a th:href="@{e}">Log Out</a>
+			</div>
+		</div>
+
+		<div class="main-container">
+			
+			<form th:action="@{createTransactionResponse}" method="post" id="transaction">
+				<div class="title">Transaction</div>
+				<div class="horizontal">
+					<label>Account ID:</label>
+					
+					<select name="accountId">
+						<option selected disabled>Select</option>
+						<option th:each="account:${accounts}" th:text="${account.accountId}"
+							th:value="${account.accountId}">
+					</select></div>
+				<div class="horizontal">
+					<label>Amount:</label>
+					 <input type="number" name="amount" id="amount" required></div>
+				<div class="horizontal">
+					<label>Date:</label>
+					 <input type="date" name="date" id="date" required></div>
+				<div class="horizontal">
+					<label>Description:</label>
+					 <input type="text" name="narration" id="narration" required></div>
+				<div class="horizontal">
+					<label>Cheque/Reference No:</label>
+					 <input type="text" name="chequeOrReferenceNo"
+						id="chequeOrReferenceNo" required></div>
+				<div class="horizontal">
+					<label>Transaction Type:</label>
+					<select id="transactionType" name="transactionType" required>
+						<option selected disabled>Select</option>  
+						<option value="deposit">Deposit</option>
+						<option value="withdraw">Withdraw</option>
+					</select></div>
+				<div class="horizontal"><input type="submit"> </div>
+			</form>
+		</div>
+	</div>
+	<p th:text="${result}" id="result"></p>
+</body>
+
+</html>

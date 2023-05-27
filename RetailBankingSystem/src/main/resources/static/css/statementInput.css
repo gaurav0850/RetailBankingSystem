@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	/* height: 100vh; */
+	/* margin: -20px 0 50px; */
+}
+
+
+.container {
+	width: 100%;
+    min-width: 750px;
+	
+}
+
+.navigation{
+	width: 100%;
+    display: flex;
+   box-shadow: 0 5px 4px  #00000026;
+   background: #000048;
+/*    justify-content: center; */
+   align-items: center;
+}
+
+
+
+.options{
+    margin: 15px 0px 15px 50px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left:35%;
+    justify-content: space-between;
+    
+}
+
+.navigation span, .options input, .options a{
+	color: #fff;
+	cursor: pointer;
+    margin: 0 15px;
+    text-decoration: none;
+    background: none;
+    border:none;
+    font-size: 15px;
+}
+.navigation span{
+	font-weight: bold;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.main-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+/* form{ */
+/* margin: 5% 0; */
+/* } */
+
+
+
+
+.options input:hover{
+	text-decoration: underline;
+}
+
+#submit{
+	margin:25px 0 0 0;
+	width: 100px;
+	background-color:rgb(255, 255, 255);
+	cursor: pointer;
+}
+
+.title{
+	margin: 50px auto 25px;
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+.customerDetails{
+	width: 40%;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: left;
+	position: relative;
+	margin: 5% auto;
+	
+}
+
+.horizontal{
+	
+	margin:10px 0;
+}

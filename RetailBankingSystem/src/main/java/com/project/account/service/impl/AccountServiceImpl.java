@@ -18,19 +18,12 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public List<Account> findAccountsByCustomerId(int customerId) {
-		// List<Account> allAccounts = accountRepository.findAll();
+		List<Account> allAccounts = accountRepository.findAll();
 		
-		// List<Account> accounts=new ArrayList<>();
-		// for (Account account : allAccounts) {
-		// 	if(account.getCustomerId()==customerId) {
-		// 		accounts.add(account);
-		// 	}
-		// }
-
-	
-		for(Account account : accountRepository.findAll()) {
-			if(account.getCustomerId.equals(customerId)) {
-
+		List<Account> accounts=new ArrayList<>();
+		for (Account account : allAccounts) {
+			if(account.getCustomerId()==customerId) {
+				accounts.add(account);
 			}
 		}
 		return accounts;

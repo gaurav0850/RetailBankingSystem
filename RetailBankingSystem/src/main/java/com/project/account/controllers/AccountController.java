@@ -45,13 +45,19 @@ public class AccountController {
 		System.out.println(customerId);
 		System.out.println(account.toString());
 		account.setCustomerId(customerId);
-			Account save= accountRepository.save(account);
-			
-			
-			System.out.println(save.toString());
-			map.addAttribute("result", "Account created with account Id: "+save.getAccountId());
-			
-			map.addAttribute("customer", save);
+			try{
+				Account savedAccount= accountRepository.save(account);
+			}
+			catch(Exception e) {
+				System.out.println(save.toString());
+				map.addAttribute("result", "Account created with account Id: "+save.getAccountId());
+				map.addAttribute("customer", save);
+				System.out.println(e.printStackTrace());//create custome exception for account creation failed
+				//create html page for failed exception also
+			}
+			finally() {
+			//todo	
+			}
 		return "createAccount";
 	}
 	

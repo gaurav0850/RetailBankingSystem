@@ -1,7 +1,6 @@
 package com.project.account.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.account.entities.Account;
-import com.project.account.entities.Customer;
 import com.project.account.entities.repositories.AccountRepository;
 import com.project.account.entities.repositories.CustomerRepository;
 import com.project.account.service.AccountService;
@@ -47,16 +45,16 @@ public class AccountController {
 		account.setCustomerId(customerId);
 			try{
 				Account savedAccount= accountRepository.save(account);
+				System.out.println(savedAccount.toString());
+				map.addAttribute("result", "Account created with account Id: "+savedAccount.getAccountId());
+				map.addAttribute("customer", savedAccount);
 			}
 			catch(Exception e) {
-				System.out.println(save.toString());
-				map.addAttribute("result", "Account created with account Id: "+save.getAccountId());
-				map.addAttribute("customer", save);
-				System.out.println(e.printStackTrace());//create custome exception for account creation failed
+				e.printStackTrace();//create custome exception for account creation failed
 				//create html page for failed exception also
 			}
-			finally() {
-			//todo	
+			finally{
+				//todo
 			}
 		return "createAccount";
 	}

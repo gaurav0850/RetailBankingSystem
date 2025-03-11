@@ -24,8 +24,8 @@ public class Statement {
 	@Column(name="date")
 	private Date date;
 	
-	@Column(name="narration")
-	private String narration;
+	@Column(name="description")
+	private String description;
 	
 	@Column(name="chequeOrReferenceNo")
 	private String chequeOrReferenceNo;
@@ -64,11 +64,11 @@ public class Statement {
 	}
 
 	public String getNarration() {
-		return narration;
+		return description;
 	}
 
 	public void setNarration(String narration) {
-		this.narration = narration;
+		this.description = narration;
 	}
 
 	public String getChequeOrReferenceNo() {
@@ -105,8 +105,8 @@ public class Statement {
 
 	@Override
 	public String toString() {
-		return "Statement [statementId=" + statementId + ", accountId=" + accountId + ", date=" + date + ", narration="
-				+ narration + ", chequeOrReferenceNo=" + chequeOrReferenceNo + ", amount=" + amount
+		return "Statement [statementId=" + statementId + ", accountId=" + accountId + ", date=" + date + ", description="
+				+ description + ", chequeOrReferenceNo=" + chequeOrReferenceNo + ", amount=" + amount
 				+ ", transactionType=" + transactionType + ", closingBalance=" + closingBalance + "]";
 	}
 

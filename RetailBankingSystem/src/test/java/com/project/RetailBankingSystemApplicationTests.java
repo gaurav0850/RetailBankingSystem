@@ -52,7 +52,6 @@ class RetailBankingSystemApplicationTests {
     @Test
     void getCustomer() {
         int customerId = 1;
-
         Optional<Customer> optional = repository.findById(customerId);
         Assertions.assertNotNull(optional.get());
 

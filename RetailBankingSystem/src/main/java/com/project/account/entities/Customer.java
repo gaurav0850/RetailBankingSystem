@@ -12,166 +12,173 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class Customer {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="customerid")
-	private int customerId;
-	@Column(name="title")
-	private String title;
-	@Column(name="firstname")
-	private String firstName;
-	@Column(name="middleName")
-	private String middleName;
-	@Column(name="lastName")
-	private String lastName;
-	@Column(name="gender")
-	private String gender;
-	@Column(name="dateOfBirth")
-	private Date dateOfBirth;
-	
-	@Column(name="addressLine")
-	private String addressLine;
-	@Column(name="city")
-	private String city;
-	@Column(name="state")
-	private String state;
-	@Column(name="country")
-	private String country;
-	@Column(name="pincode")
-	private String pincode;
-	@Column(name="password")
-	private String password;
-	
-	@Lob
-	@Column(name="profileImage")
-	private byte[] profileImageData;
 
-	public int getCustomerId() {
-		return customerId;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
+    private int customerId;
+    @Column(name = "title",columnDefinition = "varchar(10) default ''")
+    private String title;
+    @Column(name = "firstName")
+    private String firstName;
+    @Column(name = "middleName", columnDefinition = "varchar(15) default ''")
+    private String middleName;
+    @Column(name = "lastName")
+    private String lastName;
+    @Column(name = "gender")
+    private String gender;
+    @Column(name = "dateOfBirth")
+    private Date dateOfBirth;
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
+    @Column(name = "addressLine")
+    private String addressLine;
+    @Column(name = "city")
+    private String city;
+    @Column(name = "state")
+    private String state;
+    @Column(name = "country")
+    private String country;
+    @Column(name = "pincode")
+    private String pincode;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "phone")
+    private String phone;
 
-	public String getTitle() {
-		return title;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    @Lob
+    @Column(name = "profileImage")
+    private byte[] profileImageData;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public int getCustomerId() {
+        return customerId;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
-	public String getMiddleName() {
-		return middleName;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public String getMiddleName() {
+        return middleName;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	
+    public String getGender() {
+        return gender;
+    }
 
-	public String getAddressLine() {
-		return addressLine;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public void setAddressLine(String addressLine) {
-		this.addressLine = addressLine;
-	}
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
 
-	public String getState() {
-		return state;
-	}
+    public String getAddressLine() {
+        return addressLine;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public String getPincode() {
-		return pincode;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	public byte[] getProfileImageData() {
-		return profileImageData;
-	}
+    public String getPincode() {
+        return pincode;
+    }
 
-	public void setProfileImageData(byte[] profileImageData) {
-		this.profileImageData = profileImageData;
-	}
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
 
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", title=" + title + ", firstName=" + firstName + ", middleName="
-				+ middleName + ", lastName=" + lastName + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth
-				+ ", addressLine=" + addressLine + ", city="
-				+ city + ", state=" + state + ", country=" + country + ", pincode=" + pincode + ", password=" + password
-				+ ", profileImageData=" + Arrays.toString(profileImageData) + "]";
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	
-	
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public byte[] getProfileImageData() {
+        return profileImageData;
+    }
+
+    public void setProfileImageData(byte[] profileImageData) {
+        this.profileImageData = profileImageData;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", middleName=" + middleName
+                + ", lastName=" + lastName + ", email=" + email + ", title=" + title + ", gender=" + gender
+                + ", dateOfBirth=" + dateOfBirth + ", addressLine=" + addressLine + ", city=" + city + ", state="
+                + state + ", country=" + country + ", pincode=" + pincode + ", profileImageData="
+                + Arrays.toString(profileImageData) + "]";
+    }
 }

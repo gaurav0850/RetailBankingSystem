@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment # K8s resource kind we are creating
+metadata:
+  name: retail-banking-k8s
+spec:
+  selector:
+    matchLabels:
+      app: retail-banking-k8s
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: retail-banking-k8s
+    spec:
+      containers:
+        - name: retail-banking-k8s
+          image: retail:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080

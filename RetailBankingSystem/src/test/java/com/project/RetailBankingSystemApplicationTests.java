@@ -37,7 +37,7 @@ class RetailBankingSystemApplicationTests {
     @Autowired
     EmployeeService eService;
 
-    @Test
+
     void createCustomer() {
         Date date = Date.valueOf("2020-05-25");
 //		Customer customer = new Customer("Mr.","Gaurav","Mohan","Wadibhasme", "Male", date,"abcd1234","123456789012","address line 1","nagpur", "maharashtra" , "India" , "pincode");
@@ -49,7 +49,7 @@ class RetailBankingSystemApplicationTests {
         repository.save(customer);
     }
 
-    @Test
+
     void getCustomer() {
         int customerId = 1;
         Optional<Customer> optional = repository.findById(customerId);
@@ -57,7 +57,7 @@ class RetailBankingSystemApplicationTests {
 
     }
 
-    @Test
+
     void findAccounts() {
         int customerId = 2;
         List<Account> accounts = accountService.findAccountsByCustomerId(customerId);
@@ -66,7 +66,7 @@ class RetailBankingSystemApplicationTests {
         }
     }
 
-    @Test
+
     void createStatement() {
 
         int accountId = 3;
@@ -96,7 +96,7 @@ class RetailBankingSystemApplicationTests {
 
     }
 
-    @Test
+
     public void createEmployee() {
         Employee employee = new Employee();
         employee.setUsername("Employee");

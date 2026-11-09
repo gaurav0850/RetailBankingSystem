@@ -10,7 +10,7 @@ INSERT INTO account (account_id, customer_id, initial_balance, account_type) VAL
 INSERT INTO account (account_id, customer_id, initial_balance, account_type) VALUES (4, 4, 3000.00, 'CHECKING');
 INSERT INTO account (account_id, customer_id, initial_balance, account_type) VALUES (5, 5, 500.25, 'SAVINGS');
 
-INSERT INTO customer (customer_id, first_name, last_name, email, phone) VALUES (1, 'John', 'Doe', 'john.doe@example.com', '123-456-7890');
+INSERT INTO customer (customer_id, first_name, last_name, email, phone, password) VALUES (1, 'John', 'Doe', 'john.doe@example.com', '123-456-7890', 'password');
 INSERT INTO customer (customer_id, first_name, last_name, email, phone) VALUES (2, 'Jane', 'Smith', 'jane.smith@example.com', '234-567-8901');
 INSERT INTO customer (customer_id, first_name, last_name, email, phone) VALUES (3, 'Alice', 'Jones', 'alice.jones@example.com', '345-678-9012');
 INSERT INTO customer (customer_id, first_name, last_name, email, phone) VALUES (4, 'Bob', 'Brown', 'bob.brown@example.com', '456-789-0123');
